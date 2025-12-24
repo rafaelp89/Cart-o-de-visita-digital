@@ -1,0 +1,235 @@
+/* VARIÁVEIS DE CORES */
+:root {
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --primary-blue: #007bff; /* Ajuste conforme imagem de referência */
+    --pulse-color: rgba(50, 226, 254, 0.5);
+    --button-bg: #004e92;
+    --button-bg-hover: #007bff;
+    
+    /* Fontes */
+    --font-main: 'Roboto', sans-serif;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* BACKGROUND DESKTOP */
+/* Apenas visível em telas maiores que mobile */
+.desktop-bg {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: #000;
+    background-image: url('./assets/bg.png');
+    background-size: cover;
+    background-size: cover;
+    background-position: 80% center; /* Movendo a imagem mais para a direita */
+    background-repeat: no-repeat;
+    display: none;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+    width: 100%;
+    max-width: 480px; /* Largura típica de mobile */
+    padding: 40px 20px;
+    text-align: center;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* FOTO DE PERFIL E EFEITO PULSE */
+.profile-section {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-wrapper {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid var(--primary-blue);
+    position: relative;
+    z-index: 2;
+    background-color: #000;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    filter: none;              /* garante cores originais */
+    mix-blend-mode: normal;
+}
+
+
+/* Efeito de Blur Pulsante */
+.pulse-effect {
+    position: absolute;
+    top: 75px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 160px;
+    height: 160px;
+    background-color: var(--pulse-color);
+    border-radius: 50%;
+    z-index: 1;
+    filter: blur(20px);
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.15);
+        opacity: 0.4;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.7;
+    }
+}
+
+.profile-name {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.profile-role {
+    font-size: 0.9rem;
+    color: #cccccc;
+    margin-top: 5px;
+}
+
+/* BOTÕES DE LINK */
+.links-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative; /* Adicionado para posicionamento do ícone */
+    padding: 16px;
+    background: linear-gradient(90deg, #1b7fc3 0%, #363795 100%); /* Gradiente azul estilo moderno */
+    color: white;
+    text-decoration: none;
+    border-radius: 50px; /* Botões arredondados */
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Animação de Pulo para Mobile */
+@keyframes jump {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); } /* Pula um pouco mais que o hover */
+    100% { transform: scale(1); }
+}
+
+.animate-jump {
+    animation: jump 0.4s ease;
+}
+
+.btn:hover {
+    transform: scale(1.05); /* Efeito de escala ao passar o mouse */
+    box-shadow: 0 6px 20px rgba(0, 92, 151, 0.5);
+    background: linear-gradient(90deg, #007bff 0%, #005c97 100%);
+}
+
+.btn:active {
+    transform: scale(0.98); /* Efeito de escala ao clicar */
+}
+
+/* ÍCONES NOS BOTÕES */
+.icon {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    left: 20px; /* Ajuste para mobile para não sobrepor texto */
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Cores específicas (Opcional, se quiser diferenciar) */
+/* .whatsapp { background-color: #25D366; } */
+/* .instagram { background-color: #E1306C; } */
+/* Mantendo o padrão azul pedido, mas ícones ajudam a identificar */
+
+/* FOOTER */
+.footer {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+
+
+/* RESPONSIVIDADE - DESKTOP */
+@media (min-width: 768px) {
+    .desktop-bg {
+        display: block; /* Ativa o background desktop */
+    }
+    
+    .container {
+        /* Opcional: Estilo "Glassmorphism" no container para desktop */
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .icon {
+        left: 70px; /* Volta ao alinhamento original em telas grandes */
+    }
+}
